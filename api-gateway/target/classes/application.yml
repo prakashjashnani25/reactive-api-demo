@@ -1,0 +1,21 @@
+#---  Zuul Configuration To Connect To Backend  Services 
+spring:
+ application:
+  name: APIGateway
+
+server:
+ port:9092
+
+
+zuul:
+ retryable: true
+  routes:
+   books:
+    url: http://loclahost:8090
+   customer-api:
+    path: '/customer-api/**'
+    serviceId: customer-api
+   order-api:
+    path: '/order-api/**'
+    serviceId: order-api
+    
